@@ -1,0 +1,30 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: DB_Okaz
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  # backend:
+  #   build: ./backend
+  #   environment:
+  #     DATABASE_URL: postgres://app:apppass@db:5432/appdb
+  #   depends_on:
+  #     - db
+  #   ports:
+  #     - "3000:3000"
+
+  # frontend:
+  #   build: ./frontend
+  #   depends_on:
+  #     - backend
+  #   ports:
+  #     - "8080:80"
+
+volumes:
+  db-data:
